@@ -1,0 +1,317 @@
+import React, { useState } from "react";
+import { QRCode } from "react-qrcode-logo";
+import qrData from "../data/hitData";
+import { generateAllQRDoc } from "../utils/generateQRDoc";
+import { ExternalLink } from "lucide-react";
+
+const GenerateAllQrs = () => {
+  const [generatingDoc, setGeneratingDoc] = useState(null);
+
+  const colorMap = {
+    red: "#ef4444",
+    orange: "#ff6600",
+    yellow: "#ffcc00",
+    blue: "#3399ff",
+    green: "#22c55e",
+    violet: "#8b5cf6",
+  };
+
+  const getEyeColor = (color) => {
+    const darken = (hex, percent) => {
+      let r = parseInt(hex.slice(1, 3), 16);
+      let g = parseInt(hex.slice(3, 5), 16);
+      let b = parseInt(hex.slice(5, 7), 16);
+
+      r = Math.floor(r * (1 - percent));
+      g = Math.floor(g * (1 - percent));
+      b = Math.floor(b * (1 - percent));
+
+      return `#${r.toString(16).padStart(2, "0")}${g
+        .toString(16)
+        .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+    };
+    return darken(color, 0.2);
+  };
+
+  const handleQrDownload = async (obj, globalIndex) => {
+    try {
+      // Validate if this is a special path QR code
+      if (obj.path === "final" || obj.path === "fooled") {
+        // Get the actual QR container for THIS specific QR
+        const qrContainer = document.getElementById(
+          `qr-${obj.color}-${obj.path}-${obj.qr}`
+        );
+        if (!qrContainer) {
+          throw new Error("QR container not found");
+        }
+        const canvas = qrContainer.getElementsByTagName("canvas")[0];
+        if (canvas) {
+          const dataUrl = canvas.toDataURL("image/png", 1.0);
+          const questionPreview = obj.image
+            ? "image-question"
+            : obj.question
+                .substring(0, 15)
+                .replace(/[^a-zA-Z0-9]/g, "-")
+                .toLowerCase();
+
+          const filename = `qr-${obj.color}-path${obj.path}-${questionPreview}.png`;
+
+          const link = document.createElement("a");
+          link.href = dataUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      } else {
+        // Regular path QR code - use the original globalIndex method
+        const qrContainer = document.getElementById(`qr-${globalIndex}`);
+        if (!qrContainer) {
+          throw new Error("QR container not found");
+        }
+
+        const canvas = qrContainer.getElementsByTagName("canvas")[0];
+        if (!canvas) {
+          throw new Error("Canvas element not found");
+        }
+
+        const dataUrl = canvas.toDataURL("image/png", 1.0);
+        const questionPreview = obj.image
+          ? "image-question"
+          : obj.question
+              .substring(0, 15)
+              .replace(/[^a-zA-Z0-9]/g, "-")
+              .toLowerCase();
+
+        const filename = `qr-${obj.color}-path${obj.path}-${questionPreview}.png`;
+
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    } catch (error) {
+      console.error("Failed to download QR code:", error);
+      alert("Failed to download QR code. Please try again.");
+    }
+  };
+
+  // Group QR codes by color and path for better organization
+  const groupedQrs = qrData.reduce((acc, obj) => {
+    const key = `${obj.color}-${obj.path}`;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(obj);
+    return acc;
+  }, {});
+
+  function DownloadPdfComp({
+    groupKey,
+    items,
+    color,
+    path,
+    groupIndex,
+    generatingDoc,
+    setGeneratingDoc,
+  }) {
+    const [qrDocSize, setQrDocSize] = useState(250);
+
+    const handleDownload = async () => {
+      const heading = `${
+        color.charAt(0).toUpperCase() + color.slice(1)
+      } Path ${path}`;
+      setGeneratingDoc(groupKey);
+      try {
+        console.log("qrSize: ", qrDocSize);
+        await generateAllQRDoc(items, heading, qrDocSize, groupIndex);
+      } catch (error) {
+        console.error("Failed to generate document:", error);
+        alert("Failed to generate PDF. Please try again.");
+      } finally {
+        setGeneratingDoc(null);
+      }
+    };
+
+    return (
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <label htmlFor={`size-${groupKey}`} className="text-sm text-gray-600">
+            Size:
+          </label>
+          <input
+            id={`size-${groupKey}`}
+            type="number"
+            step="50"
+            max="600"
+            value={qrDocSize}
+            onChange={(e) => setQrDocSize(Number(e.target.value))}
+            className="w-20 px-2 py-1 border border-gray-300 rounded text-sm"
+          />
+          <span className="text-sm text-gray-500">px</span>
+        </div>
+        <button
+          onClick={handleDownload}
+          disabled={generatingDoc === groupKey}
+          className={`px-4 py-2 ${
+            generatingDoc === groupKey
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          } text-white rounded-lg transition-colors flex items-center gap-2 text-sm`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {generatingDoc === groupKey ? "Generating..." : "Download PDF"}
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className="py-8 px-4 mx-auto max-w-7xl">
+      <h1 className="text-3xl font-bold text-center mb-8 pt-16">
+        QR Code Generator
+      </h1>
+
+      {Object.entries(groupedQrs).map(([groupKey, items], groupIndex) => {
+        const [color, path] = groupKey.split("-");
+        const colorHex = colorMap[color] || "#000000";
+        return (
+          <div key={groupKey} className="mb-10">
+            <div className="flex items-center justify-between mb-4 border-b pb-2">
+              <div className="flex items-center">
+                <div
+                  className="w-6 h-6 rounded-full mr-2"
+                  style={{ backgroundColor: colorHex }}
+                ></div>
+                <h2 className="text-xl font-semibold">
+                  {color.charAt(0).toUpperCase() + color.slice(1)} Path {path}
+                </h2>
+              </div>
+              <DownloadPdfComp
+                groupKey={groupKey}
+                items={items}
+                color={color}
+                path={path}
+                groupIndex={groupIndex}
+                generatingDoc={generatingDoc}
+                setGeneratingDoc={setGeneratingDoc}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {items.map((obj, index) => {
+                const qrColor = colorMap[obj.color] || "#000000";
+                const eyeColor = getEyeColor(qrColor);
+                const globalIndex = groupIndex * items.length + index;
+                const qrId =
+                  obj.path === "final" || obj.path === "fooled"
+                    ? `qr-${obj.color}-${obj.path}-${obj.qr}`
+                    : `qr-${globalIndex}`;
+
+                return (
+                  <div
+                    key={globalIndex}
+                    className="w-full flex flex-col justify-between bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="flex justify-center mb-3">
+                      <div id={qrId}>
+                        <QRCode
+                          value={`https://vjdataquesters.com/hit?q=${obj.qr}`}
+                          size={350}
+                          fgColor={qrColor}
+                          eyeColor={eyeColor}
+                          qrStyle="squares"
+                          quietZone={10}
+                          ecLevel="H"
+                          enableCORS={true}
+                          removeQrCodeBehindLogo={true}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-center space-y-3 gap-3">
+                      <div className="bg-gray-50 p-3 rounded-md w-full">
+                        {obj.image || obj.audio || obj.video ? (
+                          <div className="flex flex-col items-center">
+                            <span className="text-sm font-medium mb-1">
+                              Media Question
+                            </span>
+                            <a
+                              href={obj.image || obj.audio || obj.video}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline text-blue-500 font-semibold text-sm"
+                            >
+                              View Media
+                            </a>
+                          </div>
+                        ) : (
+                          <p
+                            className="text-sm text-gray-800 line-clamp-2 text-center"
+                            title={obj.question}
+                          >
+                            {obj.question}
+                          </p>
+                        )}
+                        <div className="text-center my-3 flex items-center justify-center gap-2">
+                          <span>code: {obj.qr}</span>
+                          {obj.stage && (
+                            <span className="text-xs font-bold px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">
+                              Stage {obj.stage}
+                            </span>
+                          )}
+                        </div>
+                        <div
+                          onClick={() => {
+                            window.open(`/hit?q=${obj.qr}`);
+                          }}
+                          className="mt-2 text-center text-sm text-blue-600 hover:text-blue-800 hover:underline cursor-pointer font-medium transition-colors flex items-center justify-center gap-1"
+                        >
+                          <span>Visit Link</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                      </div>
+
+                      <button
+                        className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2 w-full justify-center"
+                        onClick={() => handleQrDownload(obj, globalIndex)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>Download QR Code</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default GenerateAllQrs;

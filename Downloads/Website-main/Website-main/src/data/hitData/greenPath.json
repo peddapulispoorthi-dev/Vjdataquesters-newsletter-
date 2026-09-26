@@ -1,0 +1,247 @@
+[
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "zxmpq",
+    "question": "Find the IDOL\n    PEACE\n    CALM\n           LOTUS\n    ENLIGHTEN\n    ASCEND",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "kftyu",
+    "question": "I'm a common symbol of love and devotion\nMultiply me by many I become a green patch of living things.\nI bow where bells and holy waters fall,\nNear the sacred stone that devotees call.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "qwvnx",
+    "question": "When alarms sound, where do we gather fast — which spot ensures everyone lasts?",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "prlmz",
+    "question": "Brownian movement,The quantum theory of light, photoelectric effect, The special theory of relativity, The link between mass and energy, general theory of relativity\n\nfind the common?",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "hjtwd",
+    "question": "Climb where effort meets count.\nEvery step burns one more than before.\nWhen your energy hits three times three,\nwhich numbered step are you on?",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "vmxsk",
+    "question": "Two-wheelers park, soft drinks fizz, leisure hour = full benches.\nwater bottle waits quietly. Only the RED logo rules the fridge.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "zcbpw",
+    "question": null,
+    "image": "hitAssests/images/green-path-img1.png"
+  },
+  {
+    "color": "green",
+    "path": "1",
+    "qr": "fnqry",
+    "question": "CREATE&nbsp TABLE&nbsp Visionary&nbsp (\n&nbsp &nbsp &nbsp &nbsp id&nbsp INT&nbsp PRIMARY&nbsp KEY,\n&nbsp &nbsp &nbsp &nbsp first_name&nbsp VARCHAR(10),\n&nbsp &nbsp &nbsp &nbsp last_name&nbsp VARCHAR(10),\n&nbsp &nbsp &nbsp &nbsp domain&nbsp VARCHAR(20),\n&nbsp &nbsp &nbsp &nbsp title&nbsp VARCHAR(30),\n&nbsp &nbsp &nbsp &nbsp dream&nbsp VARCHAR(100)\n);\n\nINSERT&nbsp INTO&nbsp Visionary&nbsp VALUES\n(1,&nbsp '*****',&nbsp '*****',&nbsp 'Aerospace',&nbsp 'People\\'s&nbsp President',&nbsp 'Dream,&nbsp Dream,&nbsp Dream...');\n\n\nSELECT&nbsp first_name,&nbsp last_name\nFROM&nbsp Visionary\nWHERE&nbsp domain&nbsp =&nbsp 'Aerospace'\n&nbsp &nbsp AND&nbsp title&nbsp LIKE&nbsp '%President%'\n&nbsp &nbsp AND&nbsp dream&nbsp LIKE&nbsp '%Dream%';",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "wkdjh",
+    "question": "Majestic and proud, above the ground,\nWhere cheers and applause often resound.\nIn whose hall does wisdom arrive,\nOn the second rise, where ideas thrive?\nYet to shine like the radiant sun,\nOne must first burn — as all greats have done.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "txmvb",
+    "question": "Not in Rome, but still colossal.\nNot ancient, but still awesome.\nFind the open stage that hears without walls.",
+    "image": "/hitAssests/images/green-path-img2.png"
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "ylqps",
+    "question": "Not every parking has cars to show,\nSome mark respect where few wheels go.\nReserved it stands, calm and true,\nA space for those who move anew.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "vhzrk",
+    "question": "There are more number of  _____ atoms in a molecule of water than the total no of stars in our solar system.",
+    "image": "public/hitAssests/images/green-path-img3.png"
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "nfxcm",
+    "question": "A haven for calm when days get long,\nWhere silence and peace are melodious song.\nBe it a nap, a breath, or a mindful retreat—\nWhich helps your stress defeat?",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "bqwjt",
+    "question": null,
+    "image": "/hitAssests/images/green-path-img4.jpg"
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "pdglv",
+    "question": "When we think we know we cease to learn",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "2",
+    "qr": "xrkzf",
+    "question": "variable = '9238';\nwhile(engine == off):\n &nbsp &nbsp search(rows)",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "cjnpx",
+    "question": "; 🔐 Riddle in Assembly — \"---\" \n\nsection .data\n &nbsp msg db \"I guard your money, speak in digits,\", 10\n        &nbsp &nbsp db \"Serve you day and night without a tongue.\", 10\n        &nbsp &nbsp db \"What am I?\", 10, 10\n        &nbsp &nbsp db \"Answer: ATM\", 10\n    &nbsp  len equ $-msg\n\nsection .text\n   &nbsp global _start\n\n_start:\n    &nbsp mov rax, 1 &nbsp ;sys_write\n    &nbsp mov rdi, 1 &nbsp ;stdout\n    &nbsp mov rsi, msg\n    &nbsp mov rdx, len\n    &nbsp syscall\n    &nbsp mov rax, 60 &nbsp ;sys_exit\n    &nbsp xor rdi, rdi\n    &nbsp syscall",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "mtvwz",
+    "question": "Hint key = PE + Indoor + 1891 + 94x50 feet\nTarget = Zone ∩ (Inventor: J.N.) ∩ {5 fouls rule} ∩ {2 rim loops}",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "gksbr",
+    "question": "I speak without words, yet every driver listens.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "qhfyu",
+    "question": "Π ᯤ fi",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "wjplx",
+    "question": "विद्या की देवी जहाँ विराजमान — वही तुम्हारा अगला स्थान।",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "vznkt",
+    "question": "Stand by the PG wall.\nFind where green meets grey.\nYour clue lies in the pipes —\nCount them and whisper:\n'No soil, no spoil.'",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "rmxdj",
+    "question": "He once walked a crooked path of sin, begun too soon.\nAwakened by Narada, he purified his heart.\nFrom grief sprang rhythm, from silence rose verse;\nA timeless tale flowed from his pen - name this sage.",
+    "image": null
+  },
+  {
+    "color": "green",
+    "path": "3",
+    "qr": "bytpw",
+    "question": "Guess the lab??",
+    "image": "/hitAssests/images/green-path-img5.png"
+  },
+  {
+    "color": "green",
+    "path": "final",
+    "qr": "fqxmv",
+    "question": "Congrats you solved all 8 questions 🥳... \nNow get back to Registration desk to stop the Timer ",
+    "video": "hitAssests/videos/final.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "kwhzn",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-11.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "wqbmk",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-12.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "nxpls",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-13.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "jtdzr",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-14.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "fvkhw",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-15.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "gycxq",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-16.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "prmjt",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-17.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "sblzv",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-18.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "hxwnf",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-19.mp4"
+  },
+  {
+    "color": "green",
+    "path": "fooled",
+    "qr": "qkdgy",
+    "question": "Ha Ha Misguided 😂",
+    "video": "/hitAssests/videos/fooledgifs/fooled-20.mp4"
+  }
+]

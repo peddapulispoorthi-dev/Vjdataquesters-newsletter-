@@ -1,0 +1,47 @@
+import Home from "./Home";
+import About from "./About";
+import Events from "./Events";
+import Team from "./Team";
+import Testimonials from "./Testimonials";
+import Event from "../components/Event";
+import Technovista from "../components/Technovista";
+import NewsLetter from "./NewsLetter";
+import Reads from "./Reads";
+import Gallery from "./Gallery";
+// import RegistrationForm from "./RegistrationForm";
+// import Carousel3D from "../components/TechnoVistaComponents/Carousel";
+import Credentials from "./Credentials";
+import Hit from "./Hit";
+import GenerateAllQrs from "./GenerateAllQrs";
+import Members from "./Members";
+import SSDRegistration from "./SSDRegistration";
+import SSDSubmissions from "./SSDSubmissions";
+import farewell2K26Routes from "./farewell-2k26/routes";
+import HitVolControlCenter from "./hit_vol_2k26/ControlCenter";
+import Archive from "./Archive";
+const router = [
+  { path: "/", component: Home },
+  { path: "/about", component: About },
+  { path: "/testimonials", component: Testimonials },
+  { path: "/events", component: Events },
+  { path: "/events/tv24", component: Technovista },
+  { path: "/events/SSD/submissions", component: SSDSubmissions },
+  { path: "/events/:eventname", component: Event },
+  { path: "/team", component: Team },
+  { path: "/members", component: Members },
+  { path: "/newsletter", component: NewsLetter },
+  { path: "/newsletter/archive", component: Archive },
+  { path: "/archive", component: Archive },
+  { path: "/reads", component: Reads },
+  { path: "/gallery", component: Gallery },
+  { path: "/cred", component: Credentials },
+  { path: "/register/ssd", component: SSDRegistration },
+  ...farewell2K26Routes,
+  // { path: "/register", component: RegistrationForm },
+  // { path: "/hit", component: Hit },
+  // { path: "/hit-gen-qr-ultrasecretendpoint", component: GenerateAllQrs },
+  // { path: "/hit-vol-2k26/control", component: HitVolControlCenter },
+  { path: "*", component: Home },
+];
+
+export default router;
